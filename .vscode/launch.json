@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Live Server Launch",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8080/index.html",  // <- Match this!
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

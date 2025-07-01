@@ -1,0 +1,51 @@
+body {
+    background-color: #f8f5f0;
+    color: #2c2c2c;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .navbar {
+    background-color: #4b3f33 !important;
+  }
+  
+  .btn-primary {
+    background-color: #d4a373;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #c48c5c;
+  }
+  
+  .btn-danger {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #e6d4b8;
+  }
+  
+  .card-title {
+    color: #4b3f33;
+  }
+  
+  footer {
+    background-color: #4b3f33;
+    color: white;
+  }
+  
+  body.pref-dark {
+    background-color: #1e1e1e;
+    color: #eee;
+  }
+  
+  body.pref-contrast {
+    filter: contrast(1.5);
+  }
+  
+  body.pref-font {
+    font-size: 1.25rem;
+  }
+  
