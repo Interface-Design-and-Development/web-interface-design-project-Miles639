@@ -15,7 +15,6 @@
 
     <hr class="my-4">
 
-    <!-- Receipt -->
     <h3 class="mb-3">Receipt</h3>
     <div id="receipt-details"></div>
 
@@ -25,14 +24,12 @@
   </main>
 
   <script>
-    /* Pull receipt from localStorage */
     const data = JSON.parse(localStorage.getItem("receipt") || "{}");
     const box  = document.getElementById("receipt-details");
 
     if (!data.location) {
       box.innerHTML = "<div class='alert alert-danger'>No receipt found.</div>";
     } else {
-      /* Build receipt table */
       let rows = "";
       let total = 0;
       for (const [item, qty, price] of data.items) {
@@ -48,7 +45,6 @@
           <tbody>${rows}</tbody>
           <tfoot><tr><td></td><td class="text-center fw-bold">Total</td><td class="text-end fw-bold">$${total.toFixed(2)}</td></tr></tfoot>
         </table>`;
-      /* clear receipt so it isn’t reused */
       localStorage.removeItem("receipt");
     }
   </script>

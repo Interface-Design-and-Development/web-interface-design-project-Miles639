@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="index.html">Miles's Coffee and Tea</a>
@@ -20,14 +19,11 @@
     </div>
   </nav>
 
-  <!-- TOAST CONTAINER (shared with main.js) -->
   <div class="toast-container"></div>
 
-  <!-- MAIN -->
   <main class="container py-5" style="max-width: 600px;">
     <h1 class="text-center mb-4">Select Payment Method</h1>
 
-    <!-- Payment Method Radios -->
     <div class="mb-4">
       <div class="form-check">
         <input class="form-check-input pay-option" type="radio" name="payMethod" id="pay-cash" value="cash">
@@ -43,18 +39,15 @@
       </div>
     </div>
 
-    <!-- Cash -->
     <div id="section-cash" class="d-none">
       <p class="text-muted">You’ll pay in-person when your order is picked up. No further information required.</p>
     </div>
 
-    <!-- Gift Card -->
     <div id="section-gift" class="d-none">
       <label class="form-label" for="gift-code">Gift Card Code</label>
       <input id="gift-code" type="text" class="form-control" placeholder="Enter gift card code">
     </div>
 
-    <!-- Credit / Debit Card -->
     <div id="section-card" class="d-none">
       <label class="form-label" for="card-name">Name</label>
       <input id="card-name" type="text" class="form-control" placeholder="Name on card">
@@ -74,7 +67,6 @@
             </select>
             <select id="exp-year" class="form-select">
               <option disabled selected>YY</option>
-              <!-- next 8 years -->
               <option>25</option><option>26</option><option>27</option><option>28</option>
               <option>29</option><option>30</option><option>31</option><option>32</option>
             </select>

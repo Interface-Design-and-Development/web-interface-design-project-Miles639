@@ -9,14 +9,12 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <!-- Redirect if already logged in -->
   <script>
     if (localStorage.getItem("loggedIn") === "true") {
       window.location.href = "account-dashboard.html";
     }
   </script>
 
-  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="index.html">Miles's Coffee and Tea</a>
@@ -44,7 +42,6 @@
         <input id="password" type="password" class="form-control" required>
       </div>
 
-      <!-- Show / hide password -->
       <div class="form-check">
         <input class="form-check-input" type="checkbox" id="showPassword">
         <label class="form-check-label" for="showPassword">Show Password</label>
@@ -56,20 +53,17 @@
     </form>
   </div>
 
-  <!-- Toast container -->
   <div class="toast-container"></div>
 
   <footer class="text-center p-3">&copy; 2025 Miles's Coffee and Tea.</footer>
 
   <script src="assets/js/main.js"></script>
   <script>
-    // Password visibility toggle
     document.getElementById("showPassword").addEventListener("change", function () {
       const passwordField = document.getElementById("password");
       passwordField.type = this.checked ? "text" : "password";
     });
 
-    // Sign-in logic
     document.getElementById("signinForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const inputEmail = document.getElementById("email").value.trim();

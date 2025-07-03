@@ -28,7 +28,6 @@ body {
     color: #4b3f33;
   }
   
-  /* === Accessibility toggles === */
   body.pref-dark {
     background: #1e1e1e;
     color: #eee;
@@ -42,12 +41,10 @@ body {
     font-size: 1.15rem;
   }
   
-  /* === Cart badge === */
   #cart-count.d-none {
     display: none !important;
   }
   
-  /* ===== Toast messages ===== */
   .toast-container {
     position: fixed;
     bottom: 1rem;
@@ -65,7 +62,6 @@ body {
     opacity: 0.95;
   }
   
-  /* ===== Right-hand sidebar ===== */
   #sidebar {
     position: fixed;
     top: 0;
@@ -94,7 +90,6 @@ body {
     filter: invert(1);
   }
   
-  /* ===== Quantity controls in checkout ===== */
   .qty-btn {
     padding: 0.25rem 0.55rem;
     border: none;
@@ -115,7 +110,7 @@ body {
     gap: 0.5rem;
   }
   
-  /* ===== Fix image size in drink cards ===== */
+
   .card-img-top {
     height: 180px;
     width: 100%;

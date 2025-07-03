@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
   
-  /* ---------- 1. Global price list ---------- */
   const PRICE = {
     "Green Tea"     : 3.25,
     "Black Tea"     : 3.50,
@@ -21,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "Frappuccino"   : 4.75
   };
   
-  /* ---------- 2. Toast Utility ---------- */
   function toast(msg) {
     let box = document.querySelector(".toast-container");
     if (!box) {
@@ -35,8 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     box.appendChild(t);
     setTimeout(() => t.remove(), 2500);
   }
-  
-  /* ---------- 3. Sidebar Toggle ---------- */
+ 
   (() => {
     const side  = document.getElementById("sidebar");
     const open  = document.getElementById("sidebarToggle");
@@ -46,8 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
       close.addEventListener("click", () => side.classList.remove("open"));
     }
   })();
-  
-  /* ---------- 4. Accessibility Toggles ---------- */
+
   (() => {
     const body = document.body;
     ["dark", "contrast", "font"].forEach(k => {
@@ -62,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   })();
-/* ---------- 5. Cart & Customizations ---------- */
 (() => {
   const BADGE = document.getElementById("cart-count");
   const CART_K = "cart";
@@ -82,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     BADGE.classList.toggle("d-none", tot === 0);
   };
 
-  /* ---- Add‑to‑Cart buttons ---- */
   document.querySelectorAll(".add-cart-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const name = btn.closest(".card").dataset.name;
@@ -94,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ---- Customize Modal ---- */
   if (!document.getElementById("customModal")) {
     document.body.insertAdjacentHTML(
       "beforeend",
@@ -134,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
     customModal.hide();
   });
 
-  /* ---- Checkout page logic ---- */
   const TABLE = document.getElementById("cart-table");
   if (TABLE) {
     const TB = TABLE.querySelector("tbody");
@@ -202,7 +194,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updBadge();
 })();
 
-/* ---------- 6. Payment page ---------- */
 (() => {
   const payBtn = document.getElementById("confirm-payment");
   if (!payBtn) return;

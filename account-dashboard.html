@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold" href="index.html">Miles's Coffee and Tea</a>
@@ -21,7 +20,6 @@
   <main class="container py-5" style="max-width:720px;">
     <h1 class="text-center mb-4">My Account</h1>
 
-    <!-- ======= PROFILE EDIT ======= -->
     <h4 class="mb-3">Profile</h4>
     <form id="profileForm" class="vstack gap-3">
       <div class="row">
@@ -79,7 +77,6 @@
       <button class="btn btn-primary align-self-end px-4">Save Changes</button>
     </form>
 
-    <!-- ======= CREDIT / DEBIT CARD (DEFAULT PAYMENT) ======= -->
     <hr class="my-5">
     <h4 class="mb-3">Default Payment – Credit / Debit Card</h4>
     <form id="cardForm" class="vstack gap-3">
@@ -115,7 +112,6 @@
       <button class="btn btn-secondary align-self-start">Save Card</button>
     </form>
 
-    <!-- ======= DELETE ACCOUNT (Danger Zone heading removed) ======= -->
     <hr class="my-5">
     <button id="delAccount" class="btn btn-outline-danger">Delete Account</button>
   </main>
@@ -124,7 +120,6 @@
 
   <script src="assets/js/main.js"></script>
   <script>
-    /* ---- Guards ---- */
     if (localStorage.getItem("loggedIn") !== "true") {
       window.location.href = "signin.html";
     }
@@ -132,7 +127,6 @@
     const userKey   = "user";
     const cardKey   = "defaultCard";
 
-    /* ====== Prefill profile ====== */
     const user = JSON.parse(localStorage.getItem(userKey) || "{}");
     if (Object.keys(user).length) {
       profFirst.value = user.firstName || "";
@@ -147,7 +141,6 @@
       profAddl.value  = user.additional|| "";
     }
 
-    /* ====== Prefill card ====== */
     const cardObj = JSON.parse(localStorage.getItem(cardKey) || "{}");
     if (Object.keys(cardObj).length) {
       cardName.value  = cardObj.name  || "";
@@ -157,7 +150,6 @@
       cardCvv.value   = cardObj.cvv   || "";
     }
 
-    /* ====== Save profile ====== */
     profileForm.addEventListener("submit", e => {
       e.preventDefault();
       const updated = {
@@ -177,7 +169,6 @@
       toast?.("Profile updated!");
     });
 
-    /* ====== Save card ====== */
     cardForm.addEventListener("submit", e => {
       e.preventDefault();
       const card = {
@@ -191,13 +182,11 @@
       toast?.("Card saved!");
     });
 
-    /* ====== Sign out ====== */
     signOut.addEventListener("click", () => {
       localStorage.removeItem("loggedIn");
       window.location.href = "index.html";
     });
 
-    /* ====== Delete account ====== */
     delAccount.addEventListener("click", () => {
       if (confirm("Delete your account permanently?")) {
         ["loggedIn", userKey, cardKey].forEach(k => localStorage.removeItem(k));
