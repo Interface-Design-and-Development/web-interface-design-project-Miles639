@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Account – Miles's Coffee and Tea</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="index.html">Miles's Coffee and Tea</a>
+      <button id="signOut" class="btn btn-sm btn-outline-light ms-auto">Sign Out</button>
+    </div>
+  </nav>
+
+  <main class="container py-5" style="max-width:720px;">
+    <h1 class="text-center mb-4">My Account</h1>
+
+    <!-- ======= PROFILE EDIT ======= -->
+    <h4 class="mb-3">Profile</h4>
+    <form id="profileForm" class="vstack gap-3">
+      <div class="row">
+        <div class="col">
+          <label class="form-label" for="profFirst">First Name</label>
+          <input id="profFirst" type="text" class="form-control" required>
+        </div>
+        <div class="col">
+          <label class="form-label" for="profLast">Last Name</label>
+          <input id="profLast" type="text" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label class="form-label" for="profPhone">Phone</label>
+          <input id="profPhone" type="tel" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="profEmail">Email</label>
+          <input id="profEmail" type="email" class="form-control" required>
+        </div>
+      </div>
+
+      <div>
+        <label class="form-label" for="profStreet">Street</label>
+        <input id="profStreet" type="text" class="form-control" required>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <label class="form-label" for="profApt">Apt #</label>
+          <input id="profApt" type="text" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="profCity">City</label>
+          <input id="profCity" type="text" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label" for="profState">State</label>
+          <input id="profState" type="text" class="form-control" required>
+        </div>
+      </div>
+
+      <div>
+        <label class="form-label" for="profZip">ZIP Code</label>
+        <input id="profZip" type="text" class="form-control" required>
+      </div>
+
+      <div>
+        <label class="form-label" for="profAddl">Additional Info</label>
+        <textarea id="profAddl" rows="3" class="form-control"></textarea>
+      </div>
+
+      <button class="btn btn-primary align-self-end px-4">Save Changes</button>
+    </form>
+
+    <!-- ======= CREDIT / DEBIT CARD (DEFAULT PAYMENT) ======= -->
+    <hr class="my-5">
+    <h4 class="mb-3">Default Payment – Credit / Debit Card</h4>
+    <form id="cardForm" class="vstack gap-3">
+      <label class="form-label" for="cardName">Name on Card</label>
+      <input id="cardName" type="text" class="form-control" required>
+
+      <label class="form-label" for="cardNum">Card Number</label>
+      <input id="cardNum" type="text" class="form-control" placeholder="1234 5678 9012 3456" required>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label class="form-label" for="expMonth">Expiration</label>
+          <div class="d-flex gap-2">
+            <select id="expMonth" class="form-select" required>
+              <option disabled value="">MM</option>
+              <option>01</option><option>02</option><option>03</option><option>04</option><option>05</option>
+              <option>06</option><option>07</option><option>08</option><option>09</option><option>10</option>
+              <option>11</option><option>12</option>
+            </select>
+            <select id="expYear" class="form-select" required>
+              <option disabled value="">YY</option>
+              <option>25</option><option>26</option><option>27</option><option>28</option>
+              <option>29</option><option>30</option><option>31</option><option>32</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="cardCvv">CVC</label>
+          <input id="cardCvv" type="text" class="form-control" placeholder="123" required>
+        </div>
+      </div>
+
+      <button class="btn btn-secondary align-self-start">Save Card</button>
+    </form>
+
+    <!-- ======= DELETE ACCOUNT (Danger Zone heading removed) ======= -->
+    <hr class="my-5">
+    <button id="delAccount" class="btn btn-outline-danger">Delete Account</button>
+  </main>
+
+  <div class="toast-container"></div>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    /* ---- Guards ---- */
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "signin.html";
+    }
+
+    const userKey   = "user";
+    const cardKey   = "defaultCard";
+
+    /* ====== Prefill profile ====== */
+    const user = JSON.parse(localStorage.getItem(userKey) || "{}");
+    if (Object.keys(user).length) {
+      profFirst.value = user.firstName || "";
+      profLast .value = user.lastName  || "";
+      profPhone.value = user.phone     || "";
+      profEmail.value = user.email     || "";
+      profStreet.value= user.street    || "";
+      profApt.value   = user.apartment || "";
+      profCity.value  = user.city      || "";
+      profState.value = user.state     || "";
+      profZip.value   = user.zip       || "";
+      profAddl.value  = user.additional|| "";
+    }
+
+    /* ====== Prefill card ====== */
+    const cardObj = JSON.parse(localStorage.getItem(cardKey) || "{}");
+    if (Object.keys(cardObj).length) {
+      cardName.value  = cardObj.name  || "";
+      cardNum.value   = cardObj.num   || "";
+      expMonth.value  = cardObj.mm    || "";
+      expYear.value   = cardObj.yy    || "";
+      cardCvv.value   = cardObj.cvv   || "";
+    }
+
+    /* ====== Save profile ====== */
+    profileForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const updated = {
+        firstName : profFirst.value.trim(),
+        lastName  : profLast.value.trim(),
+        phone     : profPhone.value.trim(),
+        email     : profEmail.value.trim(),
+        street    : profStreet.value.trim(),
+        apartment : profApt.value.trim(),
+        city      : profCity.value.trim(),
+        state     : profState.value.trim(),
+        zip       : profZip.value.trim(),
+        additional: profAddl.value.trim(),
+        password  : user.password
+      };
+      localStorage.setItem(userKey, JSON.stringify(updated));
+      toast?.("Profile updated!");
+    });
+
+    /* ====== Save card ====== */
+    cardForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const card = {
+        name : cardName.value.trim(),
+        num  : cardNum.value.trim(),
+        mm   : expMonth.value,
+        yy   : expYear.value,
+        cvv  : cardCvv.value.trim()
+      };
+      localStorage.setItem(cardKey, JSON.stringify(card));
+      toast?.("Card saved!");
+    });
+
+    /* ====== Sign out ====== */
+    signOut.addEventListener("click", () => {
+      localStorage.removeItem("loggedIn");
+      window.location.href = "index.html";
+    });
+
+    /* ====== Delete account ====== */
+    delAccount.addEventListener("click", () => {
+      if (confirm("Delete your account permanently?")) {
+        ["loggedIn", userKey, cardKey].forEach(k => localStorage.removeItem(k));
+        toast?.("Account deleted");
+        setTimeout(() => (window.location.href = "index.html"), 700);
+      }
+    });
+  </script>
+</body>
+</html>

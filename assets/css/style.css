@@ -1,29 +1,26 @@
 body {
-    background-color: #f8f5f0;
+    background: #f8f5f0;
     color: #2c2c2c;
     font-family: 'Montserrat', sans-serif;
   }
   
-  .navbar {
-    background-color: #4b3f33 !important;
+  .navbar,
+  footer {
+    background: #4b3f33 !important;
+    color: #fff;
   }
   
   .btn-primary {
-    background-color: #d4a373;
+    background: #d4a373;
     border: none;
   }
   
   .btn-primary:hover {
-    background-color: #c48c5c;
-  }
-  
-  .btn-danger {
-    font-size: 1.5rem;
-    padding: 1rem 2rem;
+    background: #c48c5c;
   }
   
   .card {
-    background-color: #ffffff;
+    background: #fff;
     border: 1px solid #e6d4b8;
   }
   
@@ -31,21 +28,96 @@ body {
     color: #4b3f33;
   }
   
-  footer {
-    background-color: #4b3f33;
-    color: white;
-  }
-  
+  /* === Accessibility toggles === */
   body.pref-dark {
-    background-color: #1e1e1e;
+    background: #1e1e1e;
     color: #eee;
   }
   
   body.pref-contrast {
-    filter: contrast(1.5);
+    filter: contrast(1.4) saturate(1.2);
   }
   
   body.pref-font {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
   
+  /* === Cart badge === */
+  #cart-count.d-none {
+    display: none !important;
+  }
+  
+  /* ===== Toast messages ===== */
+  .toast-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1060;
+  }
+  
+  .toast-msg {
+    background: #333;
+    color: #fff;
+    padding: 0.65rem 1.1rem;
+    border-radius: 0.25rem;
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    opacity: 0.95;
+  }
+  
+  /* ===== Right-hand sidebar ===== */
+  #sidebar {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100%;
+    background: #4b3f33;
+    color: #fff;
+    transition: right 0.3s ease;
+    z-index: 1050;
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+  }
+  
+  #sidebar.open {
+    right: 0;
+  }
+  
+  #sidebar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  #sidebar .btn-close {
+    filter: invert(1);
+  }
+  
+  /* ===== Quantity controls in checkout ===== */
+  .qty-btn {
+    padding: 0.25rem 0.55rem;
+    border: none;
+    background: #d4a373;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .qty-btn:hover {
+    background: #c48c5c;
+  }
+  
+  .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* ===== Fix image size in drink cards ===== */
+  .card-img-top {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+  }
